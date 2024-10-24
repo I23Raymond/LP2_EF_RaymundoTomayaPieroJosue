@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4e54c8;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .input-field:focus {
+            border: 1px solid #4e54c8;
+            outline: none;
+        }
+
+        .submit-button {
+            background-color: #4e54c8;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #8f94fb;
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form action="#" th:action="@{/login}" method="post" class="login-form">
+            <h2 class="form-title">Bienvenido a la Magia</h2>
+            <input type="text" name="username" placeholder="🧙‍♂️ Username" required class="input-field"/>
+            <input type="password" name="password" placeholder="🔑 Password" required class="input-field"/>
+            <button type="submit" class="submit-button">🪄 Iniciar Sesión</button>
+            <div th:if="${param.error}" class="error-message">Invalid username or password.</div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #f8cdda, #1d2b64);
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1d2b64;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1d2b64;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #1d2b64;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #1d2b64;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #1d2b64;
+            color: white;
+        }
+
+        .add-product-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}">1</td>
+            <td th:text="${product.name}">Nombre del Producto</td>
+            <td th:text="${product.price}">100.00</td>
+            <td>
+                <a th:href="@{/products/{id}(id=${product.id})}">Editar</a>
+                <a th:href="@{/products/delete/{id}(id=${product.id})}">Eliminar</a>
+            </td>
+        </tr>
+    </table>
+    <a class="add-product-link" th:href="@{/products/new}">➕ Añadir Nuevo Producto</a>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ffafbd, #ffc3a0);
+            font-family: 'Arial', sans-serif;
+            padding: 40px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3f3f3f;
+            margin-bottom: 20px; /* Espacio reducido para mayor estética */
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column; /* Alineación vertical */
+            align-items: center; /* Centra los elementos del formulario */
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff6f61;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4a3d;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+        <h1>Registro de Usuario</h1> <!-- Título colocado dentro del formulario -->
+        <input type="text" th:field="*{username}" placeholder="Nombre de Usuario" required />
+        <input type="password" th:field="*{password}" placeholder="Contraseña" required />
+        <button type="submit">Registrar</button>
+        <div th:if="${param.error}" class="error-message">Error en el registro. Inténtalo de nuevo.</div>
+    </form>
+</body>
+</html>
